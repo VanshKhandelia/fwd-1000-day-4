@@ -80,10 +80,98 @@ a:focus {
 	max-width: 120rem;
 	margin: 0 auto;
 }
-
 /* Header
 --------------------------------------------- */
+.site-header {
+	background-color:azure;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	/* add flex styles here */
+}
 
+.site-header .site-name{
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 1.75rem;
+	color: #282828;
+	font-weight: bold;
+	margin: 0 1rem;
+}
+
+.site-navigation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.site-navigation a {
+	color: #282828;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	display: block;
+	padding: 1rem;
+	font-size: 1.25rem;
+	text-decoration: none;
+}
+
+/* START -- STYLES FOR MOBILE MENU */
+/* we will cover this more later */
+.site-navigation ul {
+	display: none;
+	position: absolute;
+	top: 4.5rem;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	background-color: azure;
+}
+
+.menu-toggle {
+	display: block;
+	background-color: transparent;
+	border: 0;
+	padding: 1rem;
+}
+
+.menu-toggle:focus {
+	border: 0;
+	outline: 1px dotted;
+}
+
+.site-navigation.toggled ul {
+	display: block;
+}
+/* END -- STYLES FOR MOBILE MENU */
+
+
+@media (min-width: 50em) {
+
+	.menu-toggle {
+		display: none;
+	}
+
+	.site-navigation {
+		flex: 1 1 auto;
+		/* add flex styles here */
+	}
+
+	.site-navigation ul,
+	.site-navigation.toggled ul {
+		/* add flex styles here */
+        display: flex;
+		justify-content: flex-end;
+		/* START - Remove Mobile Menu Styles */
+		position: relative;
+		top: 0;
+		/* END - Remove Mobile Menu Styles  */
+	}
+
+	.site-navigation a {
+		line-height: 4.5rem; 
+		padding: 0 1rem;
+	}
+}
 
 
 /* Main
@@ -106,27 +194,91 @@ a:focus {
 	text-transform: uppercase;
 	text-align: center;
 }
-
 .page-header img {
 	display: block;
 	object-fit: cover;
 	min-height: 25rem;
 }
+/* Section: About */
 
+.section-about h2{
+	text-align: center;
+}
+/* Section: Products */
+
+.products-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.products-wrapper .product{
+	box-shadow: 0 4px 8px #c1c0c058;
+	margin: 0.5rem;
+	width: 18.75rem;
+}
+
+.product-text{
+	margin: 16px;
+}
+
+.product-text a{
+	background-color: #008000;
+	padding: 0.5rem 1rem;
+	color: #ffffff;
+}
+
+/* Mobile View Ended Now Desktop View */
 @media (min-width: 50em) {
 
 	.page-header h1 {
 		font-size: 5rem;
 	}
-	
+
+	.section-products{
+		display: flex;
+	}
+
+	.products-wrapper{
+		width: 75%;
+		order: 1;
+	}
+
+	.products-sidebar{
+		width: 25%;
+		order: 0;
+	}
+	.section-about{
+		width: 50%;
+		margin: 2rem auto;
+	}
 }
-
-/* Section: About */
-
-
-/* Section: Products */
-
-
 
 /* Footer
 --------------------------------------------- */
+
+.site-footer{
+	background-color: #c6c6c6;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.site-footer p,
+.site-footer address,
+.site-footer nav{
+	margin: 0.5rem 1rem;
+}
+
+.site-footer ul{
+	list-style: none;
+	padding: 0px;
+}
+
+@media (min-width: 50em){
+	.site-footer{
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
